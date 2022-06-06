@@ -10,10 +10,11 @@ function get_tool_box_json() {
     })
     x = JSON.stringify(x)
     x = String(x);
-    x='export const blocks ='+x;
+    x = 'export const blocks =' + x;
+    x = x.replaceAll('kind: "categoryToolbox",', '');
     x = x.replaceAll('"blockxml":{}', '"blockxml":""');
     x = x.replaceAll('cssconfig', 'cssConfig');
-    x = x.replaceAll('"contents":[{', ' kind: "categoryToolbox","contents": [{');
+    x = x.replace('"contents":[{', ' kind: "categoryToolbox","contents": [{');
     x = JSON.parse(JSON.stringify(x));
     return x
 }
